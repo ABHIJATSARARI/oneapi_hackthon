@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weed Detection</title>
+	<style type="text/css">
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		h1 {
+			text-align: center;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		input[type="file"] {
+			padding: 10px;
+			margin-bottom: 20px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			cursor: pointer;
+		}
+		button[type="submit"] {
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.result {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		.result img {
+			width: 300px;
+			margin-bottom: 20px;
+		}
+		.result p {
+			font-size: 18px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h1>Weed Detection in Crops</h1>
+	<form action="/predict" method="POST" enctype="multipart/form-data">
+		<input type="file" name="file" accept="image/*">
+		<button type="submit">Submit</button>
+	</form>
+	{% if result %}
+	<div class="result">
+		<img src="{{ result }}">
+		<p>{{ prediction }}</p>
+	</div>
+	{% endif %}
+</body>
+</html>
